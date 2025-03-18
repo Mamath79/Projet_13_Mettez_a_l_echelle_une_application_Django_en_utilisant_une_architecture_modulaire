@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Erreur 404{% endblock title %}
+
+{% block content %}
+<style>
+    h1, p, div {
+        text-align: center;
+    }
+</style>
+    <h1>Erreur 404</h1>
+    <p>La page que vous cherchez n'existe pas.</p>
+    <p>Veuillez vérifier l'URL et réessayer.</p>
+    <div>
+        <a href="{% url 'index' %}">Retour à l'accueil</a>
+    </div>
+{% endblock content %}
