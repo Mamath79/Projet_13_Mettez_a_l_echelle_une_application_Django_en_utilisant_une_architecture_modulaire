@@ -21,10 +21,7 @@ def index(request):
     """
     try:
         return render(request, "index.html")
-
     except Exception as e:
-        logger.error(
-            "Erreur dans la vue index", exc_info=True
-        )  # Log avec détail de l'erreur
-        sentry_sdk.capture_exception(e)  # Envoi de l'exception à Sentry
-        return HttpResponseServerError("Une erreur interne est survenue.")  # Page 500
+        logger.error(f"An error occurred: {e}")
+        sentry_sdk.capture_exception(e)
+        return HttpResponseServerError("Internal Server Error")

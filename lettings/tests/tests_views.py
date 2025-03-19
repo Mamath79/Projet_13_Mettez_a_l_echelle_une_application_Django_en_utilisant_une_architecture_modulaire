@@ -1,32 +1,22 @@
-"""
-Integration tests for the 'lettings' application views.
-"""
-
-from django.test import TestCase
+from django.test import TestCase, Client
 from django.urls import reverse
 from lettings.models import Address, Letting
 
-
-class LettingViewsTest(TestCase):
+class LettingsViewTest(TestCase):
     """
-    Test case for the views in the 'lettings' application.
+    Test the Lettings views.
     """
-
     def setUp(self):
         """
-        Set up test data for the views.
+        Set up the test environment for LettingsViewTest.
+        Create an instance of Address with test values.
         """
+        self.client = Client()
         self.address = Address.objects.create(
-            number=10,
-            street="Main Street",
-            city="Springfield",
-            state="SP",
-            zip_code=12345,
-            country_iso_code="USA",
+            number=1, street="Main Street", city="Paris",
+            state="FR", zip_code=75001, country_iso_code="FR"
         )
-        self.letting = Letting.objects.create(
-            title="Cozy Apartment", address=self.address
-        )
+        self.letting = Letting.objects.create(title="Nice House", address=self.address)
 
     def test_lettings_index_view(self):
         """
@@ -43,4 +33,4 @@ class LettingViewsTest(TestCase):
         response = self.client.get(reverse("lettings:letting", args=[self.letting.id]))
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, "lettings/letting.html")
-        self.assertContains(response, "Cozy Apartment")
+        self.assertContains(response, "Nice House")
