@@ -5,10 +5,9 @@ This module defines the views for managing and displaying letting information,
 including the list of all lettings and individual letting details.
 """
 
-from django.shortcuts import render
 from lettings.models import Letting
-
-
+from django.shortcuts import render
+    
 def index(request):
     """
     View function for displaying the list of all lettings.
