@@ -6,6 +6,7 @@ from django.test import SimpleTestCase
 from django.urls import reverse, resolve
 from profiles.views import profile
 
+
 class TestUrls(SimpleTestCase):
     """
     Test case for the URLs in the profiles application.

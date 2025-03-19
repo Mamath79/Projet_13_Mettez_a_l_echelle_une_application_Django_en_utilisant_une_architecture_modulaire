@@ -6,6 +6,7 @@ from django.test import SimpleTestCase
 from django.urls import resolve, reverse
 from lettings.views import index, letting
 
+
 class LettingsURLsTest(SimpleTestCase):
     """
     Test case for the URL configuration of the 'lettings' application.

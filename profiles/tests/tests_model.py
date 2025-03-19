@@ -6,6 +6,7 @@ from django.test import TestCase
 from django.contrib.auth.models import User
 from profiles.models import Profile
 
+
 class ProfileModelTest(TestCase):
     """
     Test case for the Profile model.
@@ -28,7 +29,7 @@ class ProfileModelTest(TestCase):
         """
         Test that the Profile instance is represented as a string correctly.
         """
-        self.assertEqual(str(self.profile), "testuser") 
+        self.assertEqual(str(self.profile), "testuser")
 
     def test_profile_favorite_city(self):
         """

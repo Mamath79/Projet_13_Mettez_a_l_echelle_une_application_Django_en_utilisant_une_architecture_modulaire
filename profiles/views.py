@@ -5,7 +5,7 @@ This module defines the views for managing and displaying user profiles,
 including the list of all profiles and individual profile details.
 """
 
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from profiles.models import Profile
 
 
@@ -31,19 +31,8 @@ def profile(request, username):
     """
     View function for displaying details of a specific user profile.
 
-    This view retrieves a specific profile by the associated user's username
-    and displays its details.
-
-    Args:
-        request: The HTTP request object.
-        username (str): The username of the user whose profile to display.
-
-    Returns:
-        HttpResponse: Rendered profiles/profile.html template with the profile details.
-
-    Raises:
-        Profile.DoesNotExist: If the profile for the specified username is not found.
+    If the profile does not exist, return a 404 error.
     """
-    profile = Profile.objects.get(user__username=username)
+    profile = get_object_or_404(Profile, user__username=username)
     context = {"profile": profile}
     return render(request, "profiles/profile.html", context)
