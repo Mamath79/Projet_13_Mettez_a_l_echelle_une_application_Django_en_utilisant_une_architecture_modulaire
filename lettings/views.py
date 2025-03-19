@@ -7,7 +7,10 @@ including the list of all lettings and individual letting details.
 
 from lettings.models import Letting
 from django.shortcuts import render
-    
+from django.http import Http404
+import sentry_sdk
+
+
 def index(request):
     """
     View function for displaying the list of all lettings.
@@ -21,9 +24,13 @@ def index(request):
     Returns:
         HttpResponse: Rendered lettings/index.html template with the list of lettings.
     """
-    lettings_list = Letting.objects.all()
-    context = {"lettings_list": lettings_list}
-    return render(request, "lettings/index.html", context)
+    try:
+        lettings_list = Letting.objects.all()
+        context = {"lettings_list": lettings_list}
+        return render(request, "lettings/index.html", context)
+    except Exception as e:
+        sentry_sdk.capture_exception(e)
+        raise
 
 
 def letting(request, letting_id):
@@ -43,9 +50,16 @@ def letting(request, letting_id):
     Raises:
         Letting.DoesNotExist: If the letting with the specified ID is not found.
     """
-    letting = Letting.objects.get(id=letting_id)
-    context = {
-        "title": letting.title,
-        "address": letting.address,
-    }
-    return render(request, "lettings/letting.html", context)
+    try:
+        letting = Letting.objects.get(id=letting_id)
+        context = {
+            "title": letting.title,
+            "address": letting.address,
+        }
+        return render(request, "lettings/letting.html", context)
+    except Letting.DoesNotExist:
+        sentry_sdk.capture_message(f"Letting not found: {letting_id}", level="error")
+        raise Http404("Letting does not exist")
+    except Exception as e:
+        sentry_sdk.capture_exception(e)
+        raise

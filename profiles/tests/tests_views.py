@@ -18,7 +18,9 @@ class ProfileViewTest(TestCase):
         Set up a test client and create test users with profiles.
         """
         self.client = Client()
-        self.user = User.objects.create_user(username="testuser", password="testpassword")
+        self.user = User.objects.create_user(
+            username="testuser", password="testpassword"
+        )
         self.profile = Profile.objects.create(user=self.user, favorite_city="Paris")
 
     def test_profiles_index_view_status_code(self):
@@ -46,21 +48,27 @@ class ProfileViewTest(TestCase):
         """
         Test that the profile detail view returns a 200 status code.
         """
-        response = self.client.get(reverse("profiles:profile", args=[self.user.username]))
+        response = self.client.get(
+            reverse("profiles:profile", args=[self.user.username])
+        )
         self.assertEqual(response.status_code, 200)
 
     def test_profile_view_template(self):
         """
         Test that the profile detail view uses the correct template.
         """
-        response = self.client.get(reverse("profiles:profile", args=[self.user.username]))
+        response = self.client.get(
+            reverse("profiles:profile", args=[self.user.username])
+        )
         self.assertTemplateUsed(response, "profiles/profile.html")
 
     def test_profile_view_context(self):
         """
         Test that the profile view provides the correct context data.
         """
-        response = self.client.get(reverse("profiles:profile", args=[self.user.username]))
+        response = self.client.get(
+            reverse("profiles:profile", args=[self.user.username])
+        )
         self.assertEqual(response.context["profile"].favorite_city, "Paris")
 
     def test_profile_view_not_found(self):

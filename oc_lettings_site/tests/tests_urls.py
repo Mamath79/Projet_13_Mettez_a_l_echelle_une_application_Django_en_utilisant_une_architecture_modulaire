@@ -16,5 +16,5 @@ class TestUrls(SimpleTestCase):
         """
         Test that the index URL resolves to the correct view.
         """
-        url = reverse('index')
+        url = reverse("index")
         self.assertEqual(resolve(url).func, index)

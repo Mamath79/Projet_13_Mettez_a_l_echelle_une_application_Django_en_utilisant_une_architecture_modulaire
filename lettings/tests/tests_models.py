@@ -21,7 +21,7 @@ class AddressModelTest(TestCase):
             city="London",
             state="LD",
             zip_code=12345,
-            country_iso_code="GBR"
+            country_iso_code="GBR",
         )
 
     def test_address_str(self):
@@ -47,11 +47,10 @@ class LettingModelTest(TestCase):
             city="Los Angeles",
             state="CA",
             zip_code=90028,
-            country_iso_code="USA"
+            country_iso_code="USA",
         )
         self.letting = Letting.objects.create(
-            title="Luxury Villa",
-            address=self.address
+            title="Luxury Villa", address=self.address
         )
 
     def test_letting_str(self):

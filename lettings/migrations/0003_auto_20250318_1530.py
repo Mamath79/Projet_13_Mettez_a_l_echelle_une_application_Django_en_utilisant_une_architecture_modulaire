@@ -6,32 +6,32 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('lettings', '0002_migrate_data'),
+        ("lettings", "0002_migrate_data"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='address',
-            options={'verbose_name_plural': 'Addresses'},
+            name="address",
+            options={"verbose_name_plural": "Addresses"},
         ),
         migrations.AlterField(
-            model_name='address',
-            name='country_iso_code',
+            model_name="address",
+            name="country_iso_code",
             field=models.CharField(max_length=3),
         ),
         migrations.AlterField(
-            model_name='address',
-            name='number',
+            model_name="address",
+            name="number",
             field=models.PositiveIntegerField(),
         ),
         migrations.AlterField(
-            model_name='address',
-            name='state',
+            model_name="address",
+            name="state",
             field=models.CharField(max_length=2),
         ),
         migrations.AlterField(
-            model_name='address',
-            name='zip_code',
+            model_name="address",
+            name="zip_code",
             field=models.PositiveIntegerField(),
         ),
     ]

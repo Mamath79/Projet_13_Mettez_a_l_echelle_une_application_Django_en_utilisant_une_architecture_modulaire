@@ -4,6 +4,7 @@ Module for configuring the 'profiles' application.
 This module contains the configuration class for the 'profiles' application,
 which is responsible for setting the application's name attribute and other configurations.
 """
+
 from django.apps import AppConfig
 
 
@@ -17,4 +18,5 @@ class ProfilesConfig(AppConfig):
     Attributes:
         name (str): The name of the application.
     """
+
     name = "profiles"

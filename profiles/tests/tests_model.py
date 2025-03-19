@@ -11,6 +11,7 @@ class ProfileModelTest(TestCase):
     """
     Test case for the Profile model.
     """
+
     def setUp(self):
         """
         Set up a test Profile instance.

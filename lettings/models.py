@@ -5,6 +5,7 @@ This module defines the core models for storing address and rental information.
 """
 
 from django.db import models
+import sentry_sdk
 
 
 class Address(models.Model):
@@ -34,8 +35,14 @@ class Address(models.Model):
         Returns:
             str: Formatted address string.
         """
-        return (f"{self.number} {self.street}, {self.city} "
-                f"{self.state} {self.zip_code}, {self.country_iso_code}")
+        try:
+            return (
+                f"{self.number} {self.street}, {self.city} "
+                f"{self.state} {self.zip_code}, {self.country_iso_code}"
+            )
+        except Exception as e:
+            sentry_sdk.capture_exception(e)
+            return "Invalid Address"
 
     class Meta:
         """
@@ -44,6 +51,7 @@ class Address(models.Model):
         Attributes:
             verbose_name_plural (str): Defines the plural name displayed in the Django admin.
         """
+
         verbose_name_plural = "Addresses"
 
 
@@ -66,4 +74,8 @@ class Letting(models.Model):
         Returns:
             str: The title of the rental property.
         """
-        return self.title
+        try:
+            return self.title
+        except Exception as e:
+            sentry_sdk.capture_exception(e)
+            return "Unknown Letting"

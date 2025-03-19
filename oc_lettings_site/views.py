@@ -1,11 +1,9 @@
-"""
-Module containing the views for the main 'oc_lettings_site' application.
-
-This module defines the core views for the main application, including the index page
-and views for managing profiles and lettings.
-"""
-
+import logging
+import sentry_sdk
 from django.shortcuts import render
+from django.http import HttpResponseServerError
+
+logger = logging.getLogger(__name__)
 
 
 def index(request):
@@ -21,4 +19,12 @@ def index(request):
     Returns:
         HttpResponse: Rendered index.html template.
     """
-    return render(request, "index.html")
+    try:
+        return render(request, "index.html")
+
+    except Exception as e:
+        logger.error(
+            "Erreur dans la vue index", exc_info=True
+        )  # Log avec détail de l'erreur
+        sentry_sdk.capture_exception(e)  # Envoi de l'exception à Sentry
+        return HttpResponseServerError("Une erreur interne est survenue.")  # Page 500

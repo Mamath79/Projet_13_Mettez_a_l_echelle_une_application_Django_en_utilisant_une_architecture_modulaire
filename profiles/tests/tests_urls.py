@@ -16,5 +16,5 @@ class TestUrls(SimpleTestCase):
         """
         Test that the profile URL resolves correctly.
         """
-        url = reverse('profiles:profile', args=['testuser'])
+        url = reverse("profiles:profile", args=["testuser"])
         self.assertEqual(resolve(url).func, profile)

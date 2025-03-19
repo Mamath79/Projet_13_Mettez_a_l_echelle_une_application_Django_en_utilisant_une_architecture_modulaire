@@ -6,12 +6,12 @@ This module defines the models for managing user profiles and their preferences.
 
 from django.db import models
 from django.contrib.auth.models import User
+import sentry_sdk
 
 
 class Profile(models.Model):
     """
-    Model representing a u
-ser profile with additional information.
+    Model representing a user profile with additional information.
 
     This model extends the Django User model with additional fields specific
     to the application's needs.
@@ -31,7 +31,11 @@ ser profile with additional information.
         Returns:
             str: The username of the associated user.
         """
-        return self.user.username
+        try:
+            return self.user.username
+        except Exception as e:
+            sentry_sdk.capture_exception(e)
+            return "Unknown User"
 
     class Meta:
         """
@@ -40,4 +44,5 @@ ser profile with additional information.
         Attributes:
             verbose_name_plural (str): Defines the plural name displayed in the Django admin.
         """
+
         verbose_name_plural = "Profiles"

@@ -7,6 +7,7 @@ including the list of all profiles and individual profile details.
 
 from django.shortcuts import render, get_object_or_404
 from profiles.models import Profile
+import sentry_sdk
 
 
 def index(request):
@@ -22,9 +23,13 @@ def index(request):
     Returns:
         HttpResponse: Rendered profiles/index.html template with the list of profiles.
     """
-    profiles_list = Profile.objects.all()
-    context = {"profiles_list": profiles_list}
-    return render(request, "profiles/index.html", context)
+    try:
+        profiles_list = Profile.objects.all()
+        context = {"profiles_list": profiles_list}
+        return render(request, "profiles/index.html", context)
+    except Exception as e:
+        sentry_sdk.capture_exception(e)
+        raise
 
 
 def profile(request, username):
@@ -33,6 +38,10 @@ def profile(request, username):
 
     If the profile does not exist, return a 404 error.
     """
-    profile = get_object_or_404(Profile, user__username=username)
-    context = {"profile": profile}
-    return render(request, "profiles/profile.html", context)
+    try:
+        profile = get_object_or_404(Profile, user__username=username)
+        context = {"profile": profile}
+        return render(request, "profiles/profile.html", context)
+    except Exception as e:
+        sentry_sdk.capture_exception(e)
+        raise
