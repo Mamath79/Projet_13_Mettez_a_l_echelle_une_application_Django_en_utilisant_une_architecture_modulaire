@@ -18,9 +18,17 @@ class Address(models.Model):
         Returns a readable representation of the address.
         """
         try:
-            if not all([self.number, self.street, self.city, self.state, self.zip_code, self.country_iso_code]):
+            if not all([self.number,
+                        self.street,
+                        self.city,
+                        self.state,
+                        self.zip_code,
+                        self.country_iso_code]):
                 raise ValueError("Missing required fields")
-            return f"{self.number} {self.street}, {self.city} {self.state} {self.zip_code}, {self.country_iso_code}"
+            formatted_address = (f"{self.number} {self.street}, {self.city} {self.state} "
+                                 f"{self.zip_code}, {self.country_iso_code}")
+            return formatted_address
+
         except Exception as e:
             sentry_sdk.capture_exception(e)
             return "Invalid Address"

@@ -2,6 +2,7 @@ from django.test import TestCase, Client
 from django.urls import reverse
 from lettings.models import Address, Letting
 
+
 class LettingsViewTest(TestCase):
     """
     Test the Lettings views.

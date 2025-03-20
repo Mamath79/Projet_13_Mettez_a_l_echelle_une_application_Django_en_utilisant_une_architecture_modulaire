@@ -1,6 +1,7 @@
 from django.test import TestCase
 from lettings.models import Address, Letting
 
+
 class AddressModelTest(TestCase):
     def setUp(self):
         """
