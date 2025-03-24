@@ -33,6 +33,12 @@ class Address(models.Model):
             sentry_sdk.capture_exception(e)
             return "Invalid Address"
 
+    class Meta:
+        """
+        Metadata for the Address model.
+        """
+        verbose_name_plural = "Addresses"
+
 
 class Letting(models.Model):
     """
