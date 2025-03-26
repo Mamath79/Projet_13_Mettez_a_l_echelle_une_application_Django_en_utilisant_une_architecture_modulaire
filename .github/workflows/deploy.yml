@@ -84,4 +84,4 @@ jobs:
           -H "Accept: application/json" \
           -H "Authorization: Bearer ${{ secrets.RENDER_API_KEY }}" \
           -H "Content-Type: application/json" \
-          -d '{}'
+          -d '{"clearCache": true}'
