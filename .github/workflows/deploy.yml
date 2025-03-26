@@ -32,9 +32,12 @@ jobs:
 
       - name: Run tests and collect coverage
         run: |
-          coverage run -m pytest
-          coverage report
-          coverage xml
+          pytest \
+            --ds=oc_lettings_site.settings \
+            --cov=. \
+            --cov-report=term-missing \
+            --cov-report=xml \
+            --cov-fail-under=80
 
       - name: Check coverage >= 80%
         run: |
