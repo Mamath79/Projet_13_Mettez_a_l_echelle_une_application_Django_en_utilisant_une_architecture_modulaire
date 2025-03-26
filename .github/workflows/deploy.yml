@@ -39,14 +39,14 @@ jobs:
             --cov-report=xml \
             --cov-fail-under=80
 
-      - name: Check coverage >= 80%
+      - name: Run tests and collect coverage
         run: |
-          coverage_percent=$(coverage report | grep TOTAL | awk '{print $4}' | sed 's/%//')
-          echo "Coverage: $coverage_percent%"
-          if (( $(echo "$coverage_percent < 80" | bc -l) )); then
-            echo "Coverage is below 80%!"
-            exit 1
-          fi
+          pytest \
+            --ds=oc_lettings_site.settings \
+            --cov=. \
+            --cov-report=term \
+            --cov-report=xml \
+            --cov-fail-under=80
 
   docker:
     name: Build & Push Docker image
