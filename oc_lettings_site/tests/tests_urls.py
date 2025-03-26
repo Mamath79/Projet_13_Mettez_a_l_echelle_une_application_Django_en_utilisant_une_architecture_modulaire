@@ -19,6 +19,7 @@ class TestUrls(SimpleTestCase):
         url = reverse("index")
         self.assertEqual(resolve(url).func, index)
 
+
 class TestSentryDebugView(TestCase):
     def test_sentry_debug_view(self):
         """
