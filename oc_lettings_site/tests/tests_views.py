@@ -17,7 +17,7 @@ class IndexViewTest(TestCase):
 
     def test_index_view_content(self):
         response = self.client.get(reverse("index"))
-        self.assertContains(response, "Welcome to Holiday Homes")
+        self.assertContains(response, "test changement nom")
 
     def test_index_view_render(self):
         response = self.client.get(reverse("index"))
