@@ -65,7 +65,7 @@ jobs:
 
       - name: Set image name
         id: meta
-        run: echo "image_name=${{ secrets.DOCKER_USERNAME }}/python-oc-lettings:${{ github.sha }}" >> "$GITHUB_OUTPUT"
+        run: echo "image_name=docker.io/${{ secrets.DOCKER_USERNAME }}/python-oc-lettings:${{ github.sha }}" >> $GITHUB_OUTPUT
 
       - name: Build Docker image
         run: docker build -t ${{ steps.meta.outputs.image_name }} .
