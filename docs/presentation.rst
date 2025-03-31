@@ -1,7 +1,7 @@
 Presentation
 ============
 
-Python-OC-Lettings is a Django-based web application developed as part of a learning project. The application simulates a vacation rental platform, allowing users to explore profiles and listings of lettings.
+AAA Python-OC-Lettings is a Django-based web application developed as part of a learning project. The application simulates a vacation rental platform, allowing users to explore profiles and listings of lettings.
 
 The goal of this project is to apply best practices in modular Django architecture, containerization, testing, continuous integration/deployment (CI/CD), and documentation.
 
