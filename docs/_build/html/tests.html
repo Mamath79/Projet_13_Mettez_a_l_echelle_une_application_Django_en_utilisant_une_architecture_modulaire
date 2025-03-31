@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Tests &#8212; oc_lettings_site 1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="_static/basic.css?v=686e5160" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=27fed22d" />
+    <script src="_static/documentation_options.js?v=f2a433a1"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Deployment" href="deployment.html" />
+    <link rel="prev" title="Usage" href="usage.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="tests">
+<h1>Tests<a class="headerlink" href="#tests" title="Link to this heading">¶</a></h1>
+<p>This project uses <cite>pytest</cite> for testing and <cite>coverage</cite> to measure test coverage. All tests are located in dedicated <cite>tests</cite> folders within each Django app.</p>
+<section id="how-to-run-tests">
+<h2>How to Run Tests<a class="headerlink" href="#how-to-run-tests" title="Link to this heading">¶</a></h2>
+<p>To execute the full test suite:</p>
+<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
+<span class="pre">pytest</span> <span class="pre">--ds=oc_lettings_site.settings</span>
+<span class="pre">`</span></code></p>
+<p>This command will automatically discover and run all tests in the <cite>lettings</cite>, <cite>profiles</cite>, and <cite>oc_lettings_site</cite> apps.</p>
+<p>To run tests with coverage and generate a report:</p>
+<p><a href="#id1"><span class="problematic" id="id2">``</span></a><a href="#id3"><span class="problematic" id="id4">`</span></a>bash
+pytest </p>
+<blockquote>
+<div><p>–ds=oc_lettings_site.settings –cov=. –cov-report=term-missing –cov-report=html</p>
+</div></blockquote>
+<p><a href="#id5"><span class="problematic" id="id6">``</span></a><a href="#id7"><span class="problematic" id="id8">`</span></a></p>
+<p>This will:
+- Display coverage info in the terminal.
+- Generate an <cite>htmlcov/</cite> folder with a visual HTML report.</p>
+</section>
+<section id="test-coverage-requirement">
+<h2>Test Coverage Requirement<a class="headerlink" href="#test-coverage-requirement" title="Link to this heading">¶</a></h2>
+<p>The CI/CD pipeline requires a <strong>minimum coverage of 80%</strong> to pass.
+If coverage is below this threshold, the pipeline will fail.</p>
+</section>
+<section id="testing-guidelines">
+<h2>Testing Guidelines<a class="headerlink" href="#testing-guidelines" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Use <cite>pytest</cite> style for writing test functions.</p></li>
+<li><p>Place your test files in <cite>tests/</cite> folders inside each app.</p></li>
+<li><p>Keep test cases modular and independent.</p></li>
+<li><p>Mock external services (like Sentry) when needed.</p></li>
+</ul>
+</section>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Link to this heading">¶</a></h2>
+<p>Run tests only for the <cite>profiles</cite> app:</p>
+<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
+<span class="pre">pytest</span> <span class="pre">profiles/tests</span>
+<span class="pre">`</span></code></p>
+<p>Run a single test module:</p>
+<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
+<span class="pre">pytest</span> <span class="pre">lettings/tests/test_models.py</span>
+<span class="pre">`</span></code></p>
+<p>For detailed info, refer to the <cite>pytest</cite> and <cite>coverage</cite> documentation.</p>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">oc_lettings_site</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Table of Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="presentation.html">Presentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Tests</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#how-to-run-tests">How to Run Tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#test-coverage-requirement">Test Coverage Requirement</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#testing-guidelines">Testing Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#examples">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="deployment.html">Deployment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="development.html">Development</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="usage.html" title="previous chapter">Usage</a></li>
+      <li>Next: <a href="deployment.html" title="next chapter">Deployment</a></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2025, Vieillefont Mathieu.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.1.3</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="_sources/tests.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
