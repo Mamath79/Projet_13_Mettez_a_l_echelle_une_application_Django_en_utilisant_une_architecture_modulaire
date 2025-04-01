@@ -16,7 +16,7 @@ Clone the repository
 
 .. code-block:: bash
 
-   git clone https://github.com/your-username/your-repo.git
+   git clone https://github.com/Mamath79/Projet_13_Mettez_a_l_echelle_une_application_Django_en_utilisant_une_architecture_modulaire.git
    cd your-repo
 
 Create and activate a virtual environment
@@ -25,7 +25,8 @@ Create and activate a virtual environment
 .. code-block:: bash
 
    python -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   source venv/bin/activate       # On Linux and Mac 
+   source venv\Scripts\activate   # On Windows
 
 Install dependencies
 --------------------
