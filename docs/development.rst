@@ -36,14 +36,13 @@ Documentation:
 - Built with **Sphinx** in the `/docs` folder.
 - To build the HTML docs:
 
-  ```bash
-  cd docs
-  make html
-  ```
+  .. code-block:: console
+
+     cd docs
+     make html
 
 - Open the result with:
 
-  ```bash
-  open _build/html/index.html
-  ```
+  .. code-block:: console
 
+     open _build/html/index.html
