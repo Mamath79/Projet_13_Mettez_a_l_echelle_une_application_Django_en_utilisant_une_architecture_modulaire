@@ -133,9 +133,8 @@ select user_id, favorite_city from Python-OC-Lettings-FR_profile where favorite_
 
 Visit: `http://localhost:8000/admin`
 
-Use:
-- **Username**: `admin`
-- **Password**: `Abc1234!`
+> You can log in with the superuser created during local setup.
+> If you want to test with example credentials, refer to your local `.env` or fixtures.
 
 ---
 
