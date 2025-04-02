@@ -1,79 +1,145 @@
-## Résumé
+## Orange County Lettings - Python Django Project
 
-Site web d'Orange County Lettings
+This is a Django-based web application for managing lettings and user profiles, developed as part of the OpenClassrooms Python Developer path.
 
-## Développement local
+---
 
-### Prérequis
+### Contents
 
-- Compte GitHub avec accès en lecture à ce repository
+- [Features](#features)
+- [Development Setup](#development-setup)
+  - [macOS / Linux](#macos--linux)
+  - [Windows](#windows)
+- [Linting](#linting)
+- [Testing](#testing)
+- [Database](#database)
+- [Admin Panel](#admin-panel)
+
+---
+
+## Features
+
+- Index page with access to lettings and user profiles
+- Lettings and profiles management
+- Admin interface
+- Full CI/CD with Docker & GitHub Actions
+- Deployment to Render
+
+---
+
+## Development Setup
+
+### Prerequisites
+
+- GitHub account with repository access
 - Git CLI
 - SQLite3 CLI
-- Interpréteur Python, version 3.6 ou supérieure
+- Python 3.6+
 
-Dans le reste de la documentation sur le développement local, il est supposé que la commande `python` de votre OS shell exécute l'interpréteur Python ci-dessus (à moins qu'un environnement virtuel ne soit activé).
+---
 
 ### macOS / Linux
 
-#### Cloner le repository
+#### Clone the repository
 
-- `cd /path/to/put/project/in`
-- `git clone https://github.com/OpenClassrooms-Student-Center/Python-OC-Lettings-FR.git`
+```bash
+cd /path/to/put/project/in
+git clone https://github.com/OpenClassrooms-Student-Center/Python-OC-Lettings-FR.git
+cd Python-OC-Lettings-FR
+```
 
-#### Créer l'environnement virtuel
+#### Create and activate virtual environment
 
-- `cd /path/to/Python-OC-Lettings-FR`
-- `python -m venv venv`
-- `apt-get install python3-venv` (Si l'étape précédente comporte des erreurs avec un paquet non trouvé sur Ubuntu)
-- Activer l'environnement `source venv/bin/activate`
-- Confirmer que la commande `python` exécute l'interpréteur Python dans l'environnement virtuel
-`which python`
-- Confirmer que la version de l'interpréteur Python est la version 3.6 ou supérieure `python --version`
-- Confirmer que la commande `pip` exécute l'exécutable pip dans l'environnement virtuel, `which pip`
-- Pour désactiver l'environnement, `deactivate`
+```bash
+python -m venv venv
+source venv/bin/activate
+```
 
-#### Exécuter le site
+If `python3-venv` is missing:
+```bash
+sudo apt-get install python3-venv
+```
 
-- `cd /path/to/Python-OC-Lettings-FR`
-- `source venv/bin/activate`
-- `pip install --requirement requirements.txt`
-- `python manage.py runserver`
-- Aller sur `http://localhost:8000` dans un navigateur.
-- Confirmer que le site fonctionne et qu'il est possible de naviguer (vous devriez voir plusieurs profils et locations).
+Check versions:
+```bash
+which python
+python --version
+which pip
+```
+To deactivate:
+```bash
+deactivate
+```
 
-#### Linting
+#### Run the server
 
-- `cd /path/to/Python-OC-Lettings-FR`
-- `source venv/bin/activate`
-- `flake8`
+```bash
+pip install -r requirements.txt
+python manage.py runserver
+```
+Visit: `http://localhost:8000`
 
-#### Tests unitaires
+---
 
-- `cd /path/to/Python-OC-Lettings-FR`
-- `source venv/bin/activate`
-- `pytest`
+### Windows (PowerShell)
 
-#### Base de données
+```powershell
+cd /path/to/put/project/in
+git clone https://github.com/OpenClassrooms-Student-Center/Python-OC-Lettings-FR.git
+cd Python-OC-Lettings-FR
+python -m venv venv
+.\venv\Scripts\Activate.ps1
+```
 
-- `cd /path/to/Python-OC-Lettings-FR`
-- Ouvrir une session shell `sqlite3`
-- Se connecter à la base de données `.open oc-lettings-site.sqlite3`
-- Afficher les tables dans la base de données `.tables`
-- Afficher les colonnes dans le tableau des profils, `pragma table_info(Python-OC-Lettings-FR_profile);`
-- Lancer une requête sur la table des profils, `select user_id, favorite_city from
-  Python-OC-Lettings-FR_profile where favorite_city like 'B%';`
-- `.quit` pour quitter
+Check versions:
+```powershell
+(Get-Command python).Path
+python --version
+(Get-Command pip).Path
+```
 
-#### Panel d'administration
+---
 
-- Aller sur `http://localhost:8000/admin`
-- Connectez-vous avec l'utilisateur `admin`, mot de passe `Abc1234!`
+## Linting
 
-### Windows
+```bash
+flake8
+```
 
-Utilisation de PowerShell, comme ci-dessus sauf :
+---
 
-- Pour activer l'environnement virtuel, `.\venv\Scripts\Activate.ps1` 
-- Remplacer `which <my-command>` par `(Get-Command <my-command>).Path`
+## Testing
 
-<!-- test ici pour depoiement  -->
+```bash
+pytest
+```
+
+---
+
+## Database
+
+```bash
+sqlite3
+.open oc-lettings-site.sqlite3
+.tables
+pragma table_info(Python-OC-Lettings-FR_profile);
+select user_id, favorite_city from Python-OC-Lettings-FR_profile where favorite_city like 'B%';
+.quit
+```
+
+---
+
+## Admin Panel
+
+Visit: `http://localhost:8000/admin`
+
+Use:
+- **Username**: `admin`
+- **Password**: `Abc1234!`
+
+---
+
+## Documentation
+
+Online documentation is available at: https://projet-13-mettez-a-l-echelle-une-application-django.readthedocs.io/en/latest/index.html
+---

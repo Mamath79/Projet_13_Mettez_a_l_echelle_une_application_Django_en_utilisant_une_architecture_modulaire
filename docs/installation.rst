@@ -14,10 +14,16 @@ Prerequisites
 Clone the repository
 ---------------------
 
-.. code-block:: bash
+.. code-block:: console
 
-   git clone https://github.com/Mamath79/Projet_13_Mettez_a_l_echelle_une_application_Django_en_utilisant_une_architecture_modulaire.git
+   git clone https://github.com/Mamath79/Projet_13_Mettez_a_l_echelle_une_application_\
+   Django_en_utilisant_une_architecture_modulaire.git
+
+
+.. code:: bash
+
    cd your-repo
+
 
 Create and activate a virtual environment
 -----------------------------------------
