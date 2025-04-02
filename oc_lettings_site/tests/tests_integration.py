@@ -36,7 +36,7 @@ class IntegrationTest(TestCase):
         """
         response = self.client.get(reverse("index"))
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, "Welcome to Orange Conty Letting")
+        self.assertContains(response, "Welcome to Orange County Letting")
 
     def test_letting_detail_page(self):
         """
