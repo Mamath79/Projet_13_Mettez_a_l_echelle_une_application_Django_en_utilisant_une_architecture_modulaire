@@ -25,3 +25,11 @@ def index(request):
         logger.error(f"An error occurred: {e}")
         sentry_sdk.capture_exception(e)
         return HttpResponseServerError("Internal Server Error")
+
+
+def sentry_debug(request):
+    try:
+        1 / 0
+    except Exception as e:
+        sentry_sdk.capture_exception(e)
+        raise
