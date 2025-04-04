@@ -1,4 +1,4 @@
-AA Installation
+Installation
 ============
 
 Follow these steps to install and run the Python-OC-Lettings application locally.
